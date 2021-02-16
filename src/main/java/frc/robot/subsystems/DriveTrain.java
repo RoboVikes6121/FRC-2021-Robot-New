@@ -62,24 +62,31 @@ public class DriveTrain extends SubsystemBase {
   public void driveAuton(double speed){
     double move = speed;
     double turn = 0;
-
+    
     if(move > Constants.MAXSPEED) move = Constants.MAXSPEED;
     if(move < -Constants.MAXSPEED) move = -Constants.MAXSPEED;
 
-    if(Math.abs(RobotContainer.getSetGyro().getAngle()) > 0){
-      turn = RobotContainer.getSetGyro().getAngle() * Constants.DRIVEP;
+    if(Math.abs(RobotContainer.getGyro().getAngle()) > 0){
+      turn = RobotContainer.getGyro().getAngle() * Constants.DRIVEP;
       if(turn > Constants.MAXSPEED) turn = Constants.MAXSPEED;
       if(turn < -Constants.MAXSPEED) turn = -Constants.MAXSPEED;
     }
-    
-    drive.arcadeDrive(-move, turn);
+    drive.arcadeDrive(move, turn);
   }
 
   //turn a set amount in auton when called 
   public void turnAuton(double angle){
-    double error = angle - RobotContainer.getSetGyro().getAngle();
+    double error = angle - RobotContainer.getGyro().getAngle();
     double turn = error * Constants.DRIVEP; 
-    drive.arcadeDrive(0, turn);
+    if(Math.abs(error) <= 20){
+     if(Math.abs(error) <= 10){
+      turn = turn/3;
+     }else{
+      turn = turn/2;
+     }
+
+    }
+    drive.arcadeDrive(0, -turn);
   }
 
   public void end(){
@@ -110,7 +117,7 @@ public class DriveTrain extends SubsystemBase {
 
   //getting encoder avrage pos ((left+right)/2 
   public double getAvragePos(){
-    return (leftmaster.getSelectedSensorPosition() + rightmaster.getSelectedSensorPosition())/2;
+    return (Math.abs(leftmaster.getSelectedSensorPosition()) + Math.abs(rightmaster.getSelectedSensorPosition()))/2;
   }
 
   //reseting the encoders 

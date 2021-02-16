@@ -8,6 +8,7 @@
 package frc.robot.commands.Auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 
 public class MoveAuton extends CommandBase {
@@ -32,13 +33,15 @@ public class MoveAuton extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_DriveTrain.resetEncoders();
+    isDone = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_DriveTrain.driveAuton(speed);
-    if(distance >= m_DriveTrain.getAvragePos()) isDone = true;
+    m_DriveTrain.driveAuton(speed);;
+    if(distance <= (m_DriveTrain.getAvragePos() /(4096/(Math.PI*Constants.TIREDIAMETER)))) isDone = true;
   }
 
   // Called once the command ends or is interrupted.
@@ -52,4 +55,5 @@ public class MoveAuton extends CommandBase {
   public boolean isFinished() {
     return isDone;
   }
+  
 }

@@ -26,7 +26,7 @@ public class RobotContainer {
     return DriveTrain;
   } 
   private static SetGyro SetGyro = new SetGyro();
-  public static SetGyro getSetGyro(){
+  public static SetGyro getGyro(){
     return SetGyro;
   }
 

@@ -34,18 +34,21 @@ public class TurnAuton extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+
     m_DriveTrain.turnAuton(angle);
-    if(RobotContainer.getSetGyro().getAngle() == angle) isDone = true;
+    if(RobotContainer.getGyro().getAngle() >= angle-0.5 && RobotContainer.getGyro().getAngle() <= angle+0.5) isDone = true;
+    System.out.println("ISDONE= "+ isDone);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_DriveTrain.end();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return isDone;
   }
 }

@@ -18,8 +18,10 @@ public class PinkAuton extends SequentialCommandGroup {
    * Creates a new PinkAuton.
    */
   public PinkAuton(DriveTrain m_driveTrain) {
+    
     super(
-      new MoveAuton(m_driveTrain, .5, 20),
+      
+     // new MoveAuton(m_driveTrain, .5, 48)
       new TurnAuton(m_driveTrain, 90)
     );
   }
