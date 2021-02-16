@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.SetGyro;
+import frc.robot.subsystems.Shooter;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -25,6 +26,10 @@ public class RobotContainer {
   public static DriveTrain getDriveTrain(){
     return DriveTrain;
   } 
+  private static Shooter Shooter = new Shooter();
+  public static Shooter getShooter(){
+    return Shooter;
+  } 
   private static SetGyro SetGyro = new SetGyro();
   public static SetGyro getGyro(){
     return SetGyro;
@@ -37,6 +42,10 @@ public class RobotContainer {
   private static JoystickButton presitionButton = new JoystickButton(mainDriveCon, Constants.LEFTBUMPER);
   public static boolean getPresitionButton(){
     return presitionButton.get();
+  } 
+    private static JoystickButton shootButton = new JoystickButton(mainDriveCon, Constants.A);
+  public static boolean getShootButton(){
+    return shootButton.get();
   } 
 
   //getting axies on a contraller
