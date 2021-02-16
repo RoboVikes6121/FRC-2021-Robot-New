@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.Auton.MoveAuton;
 import frc.robot.commands.Auton.PinkAuton;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -34,6 +35,9 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     //creating a RobotContaner so that it can be called 
     m_robotContainer = new RobotContainer();
+    
+    //reset encoders
+    m_robotContainer.getDriveTrain().resetEncoders();
 
     //Creating cam 1 
     UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture();
@@ -46,8 +50,9 @@ public class Robot extends TimedRobot {
   // Runs the Scheduler  (will run over and over when the robot is on)
   @Override
   public void robotPeriodic() {
-
     //running the schedel
+    SmartDashboard.putNumber("Encoder M position", m_robotContainer.getDriveTrain().getAvragePos());
+    SmartDashboard.putNumber("Gyro Angle: ", m_robotContainer.getGyro().getAngle());
     CommandScheduler.getInstance().run();
   }
 
@@ -62,6 +67,10 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     RobotContainer.getDriveTrain().setBrakeMode();
+    m_robotContainer.getDriveTrain().resetEncoders();
+    
+    m_robotContainer.getGyro().reset();
+
     m_autonomousCommand = new PinkAuton(RobotContainer.getDriveTrain());
 
     if (m_autonomousCommand != null) {
@@ -77,7 +86,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     m_robotContainer.getDriveTrain().setCoastMode();
+    m_robotContainer.getGyro().reset();
 
+    m_robotContainer.getDriveTrain().resetEncoders();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }

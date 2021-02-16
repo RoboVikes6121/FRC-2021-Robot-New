@@ -43,4 +43,9 @@ public final class Constants {
     public static double MAXPRSPEED = .5;
 
     public static double DRIVEP = .1;
+
+
+    // auton
+   
+    public static double TIREDIAMETER = 6; // INCHES
 }
