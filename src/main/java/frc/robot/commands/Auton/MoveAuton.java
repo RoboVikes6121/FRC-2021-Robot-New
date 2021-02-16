@@ -19,13 +19,13 @@ public class MoveAuton extends CommandBase {
   boolean isDone;
 
   //sets up command
-  public MoveAuton(DriveTrain driveTrain, double speedi, double distancei) {
+  public MoveAuton(DriveTrain driveTrain, double speed, double distance) {
     m_DriveTrain = driveTrain;
     addRequirements(m_DriveTrain);
 
-    if(distancei > 0) speed = speedi;
-    if(distancei < 0) speed = -speedi;
-    distance = Math.abs(distancei);
+    if(distance > 0) this.speed = speed;
+    if(distance < 0) this.speed = -speed;
+    this.distance = Math.abs(distance);
     isDone = false;
   }
 

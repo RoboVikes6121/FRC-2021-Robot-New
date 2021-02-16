@@ -18,11 +18,11 @@ public class TurnAuton extends CommandBase {
   double angle;
 
   // sets up command
-  public TurnAuton(DriveTrain driveTrain, double anglei) {
+  public TurnAuton(DriveTrain driveTrain, double angle) {
     m_DriveTrain = driveTrain;
     addRequirements(m_DriveTrain);
 
-    angle = anglei;
+    this.angle = angle;
     isDone = false;
   }
 
@@ -41,6 +41,7 @@ public class TurnAuton extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_DriveTrain.end();
   }
 
   // Returns true when the command should end.

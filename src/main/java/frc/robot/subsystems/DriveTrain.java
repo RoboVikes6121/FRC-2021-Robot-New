@@ -49,10 +49,12 @@ public class DriveTrain extends SubsystemBase {
       if(turn > Constants.MAXSPEED) turn = Constants.MAXSPEED;
       if(turn < -Constants.MAXSPEED) turn = -Constants.MAXSPEED;
     }else{
-      if(move > Constants.MAXSPEED) move = Constants.MAXPRSPEED;
-      if(move < -Constants.MAXSPEED) move = -Constants.MAXPRSPEED;
-      if(turn > Constants.MAXSPEED) turn = Constants.MAXPRSPEED;
-      if(turn < -Constants.MAXSPEED) turn = -Constants.MAXPRSPEED;
+      move = move/2;
+      turn = turn/2;
+      if(move > Constants.MAXPRSPEED) move = Constants.MAXPRSPEED;
+      if(move < -Constants.MAXPRSPEED) move = -Constants.MAXPRSPEED;
+      if(turn > Constants.MAXPRSPEED) turn = Constants.MAXPRSPEED;
+      if(turn < -Constants.MAXPRSPEED) turn = -Constants.MAXPRSPEED;
     }  
 
     drive.arcadeDrive(-move, turn);
