@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.SetGyro;
 
 /**
@@ -55,6 +56,16 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return null;
+  }
+
+  private static Intake Intake = new Intake();
+  public static Intake Intake(){
+    return Intake;
+  }
+
+  private static JoystickButton intake = new JoystickButton(mainDriveCon, Constants.INTAKE);
+  public static boolean getIntake(){
+    return intake.get();
   }
 }
    
