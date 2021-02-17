@@ -44,6 +44,11 @@ public final class Constants {
 
     public static double DRIVEP = .1;
 
+    //intake
+    public static int INTAKE = 5;
+    public static int INTAKE1 = 4;
+    public static int INTAKE2 = 3;
+
 
     // auton
    
