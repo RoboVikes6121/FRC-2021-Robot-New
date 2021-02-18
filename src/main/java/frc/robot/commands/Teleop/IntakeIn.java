@@ -7,11 +7,11 @@ package frc.robot.commands.Teleop;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
 
-public class IntakeTele extends CommandBase {
+public class IntakeIn extends CommandBase {
   /** Creates a new IntakeTele. */
   private Intake m_Intake;
 
-  public IntakeTele(Intake intake) {
+  public IntakeIn(Intake intake) {
     m_Intake = intake;
     addRequirements(m_Intake);
   }
