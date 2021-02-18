@@ -25,6 +25,7 @@ public class IntakeTele extends CommandBase {
   @Override
   public void execute() {
     m_Intake.start();
+    System.out.println("COMMAND RUNNING");
   }
 
   // Called once the command ends or is interrupted.

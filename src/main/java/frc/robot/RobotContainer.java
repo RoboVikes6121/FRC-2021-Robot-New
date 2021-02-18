@@ -61,15 +61,19 @@ public class RobotContainer {
   public static double getDriveRawAxis(int axis) {
     return mainDriveCon.getRawAxis(axis);
   }
+
+  public static boolean getRawButton(int press){
+    return mainDriveCon.getRawButton(press);
+  }
   
   public RobotContainer() {
     // Configure the button bindings
+    intake.whenHeld(new IntakeTele(Intake));
+    intakeUpDown.whenPressed(new IntakeUpDown(Intake));
     configureButtonBindings();
   }
 
   private void configureButtonBindings() {
-    intake.whenHeld(new IntakeTele(Intake));
-    intakeUpDown.whenPressed(new IntakeUpDown(Intake));
   }
 
   public Command getAutonomousCommand() {

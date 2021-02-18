@@ -29,6 +29,7 @@ public class Intake extends SubsystemBase {
 
   public void end(){
     intake.set(0);
+    System.out.println("COMMAND ENDED");
   }
 
   public void sol() {
