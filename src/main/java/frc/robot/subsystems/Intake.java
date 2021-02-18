@@ -30,4 +30,12 @@ public class Intake extends SubsystemBase {
   public void end(){
     intake.set(0);
   }
+
+  public void sol() {
+    if(intakeDoubleSolenoid.get() == DoubleSolenoid.Value.kReverse){
+      intakeDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+    }else{
+      intakeDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+  }
 }

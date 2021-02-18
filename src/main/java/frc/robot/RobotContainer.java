@@ -10,6 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Teleop.IntakeTele;
+import frc.robot.commands.Teleop.IntakeUpDown;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.SetGyro;
@@ -40,6 +42,21 @@ public class RobotContainer {
     return presitionButton.get();
   } 
 
+  private static Intake Intake = new Intake();
+  public static Intake Intake(){
+    return Intake;
+  }
+
+  private static JoystickButton intake = new JoystickButton(mainDriveCon, Constants.Y);
+  public static boolean getIntake(){
+    return intake.get();
+  }
+
+  private static JoystickButton intakeUpDown = new JoystickButton(mainDriveCon, Constants.A);
+  public static boolean getIntakeUpDown(){
+    return intakeUpDown.get();
+  }
+
   //getting axies on a contraller
   public static double getDriveRawAxis(int axis) {
     return mainDriveCon.getRawAxis(axis);
@@ -51,6 +68,8 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
+    intake.whenHeld(new IntakeTele(Intake));
+    intakeUpDown.whenPressed(new IntakeUpDown(Intake));
   }
 
   public Command getAutonomousCommand() {
@@ -58,14 +77,5 @@ public class RobotContainer {
     return null;
   }
 
-  private static Intake Intake = new Intake();
-  public static Intake Intake(){
-    return Intake;
-  }
-
-  private static JoystickButton intake = new JoystickButton(mainDriveCon, Constants.INTAKE);
-  public static boolean getIntake(){
-    return intake.get();
-  }
+  
 }
-   
