@@ -51,8 +51,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     //running the schedel
-    SmartDashboard.putNumber("Encoder M position", m_robotContainer.getDriveTrain().getAvragePos());
-    SmartDashboard.putNumber("Gyro Angle: ", m_robotContainer.getGyro().getAngle());
     CommandScheduler.getInstance().run();
   }
 

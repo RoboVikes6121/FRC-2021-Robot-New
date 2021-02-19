@@ -19,7 +19,6 @@ public class Shooter extends SubsystemBase {
   private static WPI_TalonSRX shooter = new WPI_TalonSRX(Constants.FALCON);
 
   private static DoubleSolenoid kicker = new DoubleSolenoid(Constants.KICKERIN,Constants.KICKEROUT);
-  private Timer timer = new Timer();
 
   /** Creates a new Shooter. */
   public Shooter() {
@@ -40,10 +39,16 @@ public class Shooter extends SubsystemBase {
   }
   public void shoot(){ //loads ball into elevator
     kicker.set(DoubleSolenoid.Value.kForward);
-    timer.delay(1.0);
+    Timer.delay(1.0);
     kicker.set(DoubleSolenoid.Value.kReverse);
     feeder.set(0.5);
-    timer.delay(0.3);
+    Timer.delay(0.3);
+    feeder.set(0);
+  }
+
+  public void feed(){
+    feeder.set(0.5);
+    Timer.delay(0.3);
     feeder.set(0);
   }
 }

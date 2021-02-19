@@ -25,14 +25,6 @@ public final class Constants {
     public static int RIGHTSTICKX = 4;
     public static int RIGHTSTICKY = 5;
 
-    public static final int Y = 0;
-    public static final int A = 1;
-    public static final int B = 2;
-    public static final int X = 3;
-    public static int RIGHTBUMPER = 4;
-    public static int LEFTBUMPER = 5;
-    
-
     //drive train
     public static int LEFTMASTER = 0;
     public static int LEFTSLAVE = 1;
@@ -54,5 +46,5 @@ public final class Constants {
     public static int FEEDER = 6;
     public static int FALCON = 7;
     public static int KICKERIN = 2;
-    public static int KICKEROUT = 5;
+    public static int KICKEROUT = 4;
 }

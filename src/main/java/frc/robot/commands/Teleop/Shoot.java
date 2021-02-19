@@ -10,12 +10,12 @@ package frc.robot.commands.Teleop;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
-public class ShootTele extends CommandBase {
+public class Shoot extends CommandBase {
 
   private Shooter m_Shooter;
 
   // sets up command
-  public ShootTele(Shooter Shooter) {
+  public Shoot(Shooter Shooter) {
     m_Shooter = Shooter;
     addRequirements(m_Shooter);
   }
@@ -35,6 +35,6 @@ public class ShootTele extends CommandBase {
 
   // Returns true when the command should end.
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
