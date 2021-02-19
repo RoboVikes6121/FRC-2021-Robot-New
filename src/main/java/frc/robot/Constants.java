@@ -46,7 +46,7 @@ public final class Constants {
 
     //intake
     public static int INTAKE = 5;
-    public static int INTAKE1 = 4;
+    public static int INTAKE1 = 5;
     public static int INTAKE2 = 3;
 
 

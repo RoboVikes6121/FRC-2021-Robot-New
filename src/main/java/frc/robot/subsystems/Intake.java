@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -32,10 +33,12 @@ public class Intake extends SubsystemBase {
   }
 
   public void sol() {
-    if(intakeDoubleSolenoid.get() == DoubleSolenoid.Value.kReverse){
+    if(intakeDoubleSolenoid.get().equals(DoubleSolenoid.Value.kReverse)){
       intakeDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+      System.out.println("DOWN");
     }else{
       intakeDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+      System.out.println("UP");
     }
   }
 }
