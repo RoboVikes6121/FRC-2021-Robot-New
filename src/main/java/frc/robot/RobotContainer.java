@@ -30,7 +30,7 @@ public class RobotContainer {
   //creation of controllers 
   private static final XboxController mainDriveCon = new XboxController(Constants.MAINDRIVECON);
   private static JoystickButton presitionButton = new JoystickButton(mainDriveCon, XboxController.Button.kBumperLeft.value);
-  private static JoystickButton shotButton = new JoystickButton(mainDriveCon, XboxController.Button.kX.value);
+  private static JoystickButton shootButton = new JoystickButton(mainDriveCon, XboxController.Button.kX.value);
   private static JoystickButton feedButton = new JoystickButton(mainDriveCon, XboxController.Button.kB.value);
 
   //creating commands 
@@ -46,7 +46,7 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     //binding a button to a command
-    shotButton.whenPressed(shoot);
+    shootButton.whenHeld(shoot);
   }
 
   // creating get methodes for subsystems
@@ -56,7 +56,7 @@ public class RobotContainer {
   public static SetGyro getGyro(){
     return setGyro;
   }
-  public static Shooter Intake(){
+  public static Shooter getShooter(){
     return shooter;
   }
 
@@ -64,10 +64,10 @@ public class RobotContainer {
   public static boolean getPresitionButton(){
     return presitionButton.get();
   } 
-  public static boolean getIntake(){
-    return shotButton.get();
+  public static boolean getShootButton(){
+    return shootButton.get();
   }
-  public static boolean getIntakeUpDown(){
+  public static boolean getFeedButton(){
     return feedButton.get();
   }
 

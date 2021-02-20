@@ -5,14 +5,13 @@
 package frc.robot.commands.Teleop;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.Shooter;
 
-public class Feed extends CommandBase {
+public class Kick extends CommandBase {
 
   private Shooter m_Shooter;
-
-  public Feed(Shooter shooter) {
+  
+  public Kick(Shooter shooter) {
     m_Shooter = shooter;
     addRequirements(m_Shooter);
   }
@@ -32,6 +31,6 @@ public class Feed extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

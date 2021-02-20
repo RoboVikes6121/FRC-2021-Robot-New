@@ -15,8 +15,8 @@ public class Shoot extends CommandBase {
   private Shooter m_Shooter;
 
   // sets up command
-  public Shoot(Shooter Shooter) {
-    m_Shooter = Shooter;
+  public Shoot(Shooter shooter) {
+    m_Shooter = shooter;
     addRequirements(m_Shooter);
   }
 
@@ -26,15 +26,18 @@ public class Shoot extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   public void execute() {
-    m_Shooter.shoot();
+    m_Shooter.start();
+    System.out.println("SHOOT");
   }
 
   // Called once the command ends or is interrupted.
   public void end(boolean interrupted) {
+    m_Shooter.end();
+    System.out.println("END");
   }
 
   // Returns true when the command should end.
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }
