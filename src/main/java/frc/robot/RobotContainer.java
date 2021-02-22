@@ -10,10 +10,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Teleop.Kick;
 import frc.robot.commands.Teleop.Shoot;
+import frc.robot.commands.Teleop.Kick;
+import frc.robot.commands.Teleop.Feed;
+//import frc.robot.commands.Teleop.Elevator;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.SetGyro;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.AssemblyLine;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -25,20 +29,28 @@ public class RobotContainer {
   //creating sub systems
   private static final DriveTrain driveTrain = new DriveTrain();
   private static final SetGyro setGyro = new SetGyro();
-  private static final Shooter shooter = new Shooter();
+  private static final AssemblyLine AssemblyLine = new AssemblyLine();
 
   //creation of controllers 
   private static final XboxController mainDriveCon = new XboxController(Constants.MAINDRIVECON);
   private static JoystickButton presitionButton = new JoystickButton(mainDriveCon, XboxController.Button.kBumperLeft.value);
   private static JoystickButton shootButton = new JoystickButton(mainDriveCon, XboxController.Button.kX.value);
   private static JoystickButton feedButton = new JoystickButton(mainDriveCon, XboxController.Button.kB.value);
+  private static JoystickButton kickButton = new JoystickButton(mainDriveCon, XboxController.Button.kY.value);
+  private static JoystickButton elevatorButton = new JoystickButton(mainDriveCon, XboxController.Button.kA.value);
 
   //creating commands 
   private static Shoot shoot;
+  private static Feed  feed;
+  private static Kick  kick;
+  //private static Elevator elevator;
   
   public RobotContainer() {
     // finshing command setup
-    shoot = new Shoot(shooter);
+    shoot = new Shoot(AssemblyLine);
+    kick = new Kick(AssemblyLine);
+    feed = new Feed(AssemblyLine);
+    //elevator = new Elevator(AssemblyLine);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -47,6 +59,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     //binding a button to a command
     shootButton.whenHeld(shoot);
+    feedButton.whenHeld(feed);
+    kickButton.whenPressed(kick);
+    //elevatorButton.whenHeld(elevator);
+
+
   }
 
   // creating get methodes for subsystems
@@ -56,8 +73,9 @@ public class RobotContainer {
   public static SetGyro getGyro(){
     return setGyro;
   }
-  public static Shooter getShooter(){
-    return shooter;
+  public static AssemblyLine getAssemblyLine(){
+    return AssemblyLine;
+
   }
 
   // creating get methodes for buttons
@@ -69,6 +87,12 @@ public class RobotContainer {
   }
   public static boolean getFeedButton(){
     return feedButton.get();
+  }
+  public static boolean getKickButon(){
+    return kickButton.get();
+  }
+  public static boolean getElevatorButton(){
+    return elevatorButton.get();
   }
 
   // creating get methodes for axis on controler One

@@ -16,15 +16,14 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Shooter extends SubsystemBase {
+public class AssemblyLine extends SubsystemBase {
   private static WPI_VictorSPX elevator = new WPI_VictorSPX(Constants.ELEVATOR);
   private static WPI_VictorSPX feeder = new WPI_VictorSPX(Constants.FEEDER);
   private static TalonSRX shooter = new TalonSRX(Constants.FALCON);
-
   private static DoubleSolenoid kicker = new DoubleSolenoid(Constants.KICKERIN,Constants.KICKEROUT);
 
-  /** Creates a new Shooter. */
-  public Shooter() {
+  /** Creates a new shooter. */
+  public void shooter() {
   shooter.configPeakCurrentLimit(40);
   shooter.setNeutralMode(NeutralMode.Coast);
   shooter.configFactoryDefault();
@@ -40,12 +39,12 @@ public class Shooter extends SubsystemBase {
   public void start(){ //on
     System.out.println("ON");
     shooter.set(ControlMode.PercentOutput, 0.50);
-    // elevator.set(0.75);
+    elevator.set(0.2);
   }
   public void end(){ //off
     System.out.println("OFF");
     shooter.set(ControlMode.PercentOutput, 0);
-    // elevator.set(0);
+    elevator.set(0);
   }
   public void kick(){
     kicker.set(DoubleSolenoid.Value.kForward);
@@ -53,9 +52,11 @@ public class Shooter extends SubsystemBase {
     kicker.set(DoubleSolenoid.Value.kReverse);
   }
 
-  public void feeder(){
+  public void feederb(){
     feeder.set(0.5);
-    Timer.delay(0.3);
+  }
+  
+  public void feedere(){
     feeder.set(0);
   }
 }

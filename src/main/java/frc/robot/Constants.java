@@ -41,8 +41,8 @@ public final class Constants {
    
     public static double TIREDIAMETER = 6; // INCHES
 
-    // shooter
-    public static int ELEVATOR = 5;
+    // AssemblyLine
+    public static int ELEVATOR = 4;
     public static int FEEDER = 6;
     public static int FALCON = 7;
     public static int KICKERIN = 2;
