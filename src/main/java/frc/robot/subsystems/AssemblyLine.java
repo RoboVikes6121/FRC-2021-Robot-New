@@ -34,29 +34,31 @@ public class AssemblyLine extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    elevator.set(0.8);
   }
 
   public void start(){ //on
-    System.out.println("ON");
     shooter.set(ControlMode.PercentOutput, 0.50);
-    elevator.set(0.2);
   }
   public void end(){ //off
-    System.out.println("OFF");
     shooter.set(ControlMode.PercentOutput, 0);
-    elevator.set(0);
   }
+
   public void kick(){
     kicker.set(DoubleSolenoid.Value.kForward);
     Timer.delay(1.0);
     kicker.set(DoubleSolenoid.Value.kReverse);
   }
 
-  public void feederb(){
-    feeder.set(0.5);
+  public void feed(){
+    feeder.set(-0.18);
   }
   
-  public void feedere(){
+  public void fed(){
     feeder.set(0);
+  }
+
+  public void elevate(){
+    elevator.set(0.8);
   }
 }

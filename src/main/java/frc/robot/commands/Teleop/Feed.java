@@ -23,14 +23,13 @@ public class Feed extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.getAssemblyLine().feederb();
-  
+    RobotContainer.getAssemblyLine().feed();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.getAssemblyLine().feedere();
+    RobotContainer.getAssemblyLine().fed();
   }
 
   // Returns true when the command should end.

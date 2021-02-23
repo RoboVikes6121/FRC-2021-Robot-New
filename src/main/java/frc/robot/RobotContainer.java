@@ -14,7 +14,7 @@ import frc.robot.commands.Teleop.Kick;
 import frc.robot.commands.Teleop.Shoot;
 import frc.robot.commands.Teleop.Kick;
 import frc.robot.commands.Teleop.Feed;
-//import frc.robot.commands.Teleop.Elevator;
+import frc.robot.commands.Teleop.Elevator;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.SetGyro;
 import frc.robot.subsystems.AssemblyLine;
@@ -37,20 +37,20 @@ public class RobotContainer {
   private static JoystickButton shootButton = new JoystickButton(mainDriveCon, XboxController.Button.kX.value);
   private static JoystickButton feedButton = new JoystickButton(mainDriveCon, XboxController.Button.kB.value);
   private static JoystickButton kickButton = new JoystickButton(mainDriveCon, XboxController.Button.kY.value);
-  private static JoystickButton elevatorButton = new JoystickButton(mainDriveCon, XboxController.Button.kA.value);
+  //private static JoystickButton elevatorButton = new JoystickButton(mainDriveCon, XboxController.Button.kA.value);
 
   //creating commands 
   private static Shoot shoot;
   private static Feed  feed;
   private static Kick  kick;
-  //private static Elevator elevator;
+  private static Elevator elevator;
   
   public RobotContainer() {
     // finshing command setup
     shoot = new Shoot(AssemblyLine);
     kick = new Kick(AssemblyLine);
     feed = new Feed(AssemblyLine);
-    //elevator = new Elevator(AssemblyLine);
+    elevator = new Elevator(AssemblyLine);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -62,8 +62,6 @@ public class RobotContainer {
     feedButton.whenHeld(feed);
     kickButton.whenPressed(kick);
     //elevatorButton.whenHeld(elevator);
-
-
   }
 
   // creating get methodes for subsystems
@@ -91,9 +89,9 @@ public class RobotContainer {
   public static boolean getKickButon(){
     return kickButton.get();
   }
-  public static boolean getElevatorButton(){
-    return elevatorButton.get();
-  }
+  //public static boolean getElevatorButton(){
+    //return elevatorButton.get();
+  //}
 
   // creating get methodes for axis on controler One
   public static double getDriveRawAxis(int axis) {
