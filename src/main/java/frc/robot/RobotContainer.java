@@ -37,17 +37,17 @@ public class RobotContainer {
 
   //creation of controllers 
   private static final XboxController mainDriveCon = new XboxController(Constants.MAINDRIVECON);
-  private static final XboxController mainOperCon = new XboxController(Constants.MAINOPERCON);
+  //private static final XboxController mainOperCon = new XboxController(Constants.MAINOPERCON);
   private static JoystickButton presitionButton = new JoystickButton(mainDriveCon, XboxController.Button.kBumperLeft.value);
-  private static JoystickButton shootButton = new JoystickButton(mainOperCon, XboxController.Button.kX.value);
-  private static JoystickButton feedButton = new JoystickButton(mainOperCon, XboxController.Button.kB.value);
-  private static JoystickButton kickButton = new JoystickButton(mainOperCon, XboxController.Button.kY.value);
-  private static JoystickButton elevatorButton = new JoystickButton(mainOperCon, XboxController.Button.kA.value);
-  private static JoystickButton intakeButton = new JoystickButton(mainOperCon, XboxController.Button.kY.value);
-  private static JoystickButton intakeUpDownButton = new JoystickButton(mainOperCon, XboxController.Button.kA.value);
+  //private static JoystickButton shootButton = new JoystickButton(mainDriveCon, XboxController.Button.kX.value);
+  private static JoystickButton feedButton = new JoystickButton(mainDriveCon, XboxController.Button.kB.value);
+  private static JoystickButton kickButton = new JoystickButton(mainDriveCon, XboxController.Button.kY.value);
+  private static JoystickButton elevatorButton = new JoystickButton(mainDriveCon, XboxController.Button.kX.value);
+  private static JoystickButton intakeButton = new JoystickButton(mainDriveCon, XboxController.Button.kBumperRight.value);
+  private static JoystickButton intakeUpDownButton = new JoystickButton(mainDriveCon, XboxController.Button.kA.value);
 
   //creating commands 
-  private static Shoot shoot;
+  //private static Shoot shoot;
   private static Feed  feed;
   private static Kick  kick;
   private static Elevator elevator;
@@ -56,7 +56,7 @@ public class RobotContainer {
   
   public RobotContainer() {
     // finshing command setup
-    shoot = new Shoot(AssemblyLine);
+    //shoot = new Shoot(AssemblyLine);
     kick = new Kick(AssemblyLine);
     feed = new Feed(AssemblyLine);
     elevator = new Elevator(AssemblyLine);
@@ -69,10 +69,12 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     //binding a button to a command
-    shootButton.whenPressed(shoot);
+    //shootButton.whenPressed(shoot);
     feedButton.whenHeld(feed);
     kickButton.whenPressed(kick);
-    elevatorButton.whenPressed(elevator);
+    elevatorButton.whenHeld(elevator);
+    intakeButton.whenHeld(intack);
+    intakeUpDownButton.whenPressed(intakeUpDown);
   }
 
   // creating get methodes for subsystems
@@ -91,9 +93,9 @@ public class RobotContainer {
   public static boolean getPresitionButton(){
     return presitionButton.get();
   } 
-  public static boolean getShootButton(){
+  /*public static boolean getShootButton(){
     return shootButton.get();
-  }
+  }*/
   public static boolean getFeedButton(){
     return feedButton.get();
   }
@@ -102,6 +104,12 @@ public class RobotContainer {
   }
   public static boolean getElevatorButton(){
     return elevatorButton.get();
+  }
+  public static boolean getIntakeButton(){
+    return intakeButton.get();
+  }
+  public static boolean getIntakeUpDownButton(){
+    return intakeUpDownButton.get();
   }
 
   // creating get methodes for axis on controler One

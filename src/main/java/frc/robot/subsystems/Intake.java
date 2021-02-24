@@ -27,7 +27,7 @@ public class Intake extends SubsystemBase {
     intack.set(.75);
   }
 
-  public void non(){
+  public void wom(){
     intack.set(0);
   }
 

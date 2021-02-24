@@ -36,6 +36,6 @@ public class Shoot extends CommandBase {
 
   // Returns true when the command should end.
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
