@@ -2,12 +2,13 @@ package frc.robot.commands.Teleop;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intack;
+import frc.robot.subsystems.Intake;
 
 public class Intack extends CommandBase {
   /** Creates a new IntackTele. */
   private Intack m_Intack;
 
-  public Intack(Intack intack) {
+  public Intack(Intake intake) {
     m_Intack = intack;
     addRequirements(m_Intack);
   }
