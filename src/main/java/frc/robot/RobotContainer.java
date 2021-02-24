@@ -15,9 +15,12 @@ import frc.robot.commands.Teleop.Shoot;
 import frc.robot.commands.Teleop.Kick;
 import frc.robot.commands.Teleop.Feed;
 import frc.robot.commands.Teleop.Elevator;
+import frc.robot.commands.Teleop.Intack;
+import frc.robot.commands.Teleop.IntakeUpDown;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.SetGyro;
 import frc.robot.subsystems.AssemblyLine;
+import frc.robot.subsystems.Intake;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -30,6 +33,7 @@ public class RobotContainer {
   private static final DriveTrain driveTrain = new DriveTrain();
   private static final SetGyro setGyro = new SetGyro();
   private static final AssemblyLine AssemblyLine = new AssemblyLine();
+  private static final Intake Intake = new Intake();
 
   //creation of controllers 
   private static final XboxController mainDriveCon = new XboxController(Constants.MAINDRIVECON);
@@ -38,13 +42,17 @@ public class RobotContainer {
   private static JoystickButton shootButton = new JoystickButton(mainOperCon, XboxController.Button.kX.value);
   private static JoystickButton feedButton = new JoystickButton(mainOperCon, XboxController.Button.kB.value);
   private static JoystickButton kickButton = new JoystickButton(mainOperCon, XboxController.Button.kY.value);
-  private static JoystickButton elevatorButton = new JoystickButton(mainDriveCon, XboxController.Button.kA.value);
+  private static JoystickButton elevatorButton = new JoystickButton(mainOperCon, XboxController.Button.kA.value);
+  private static JoystickButton intakeButton = new JoystickButton(mainOperCon, XboxController.Button.kY.value);
+  private static JoystickButton intakeUpDownButton = new JoystickButton(mainOperCon, XboxController.Button.kA.value);
 
   //creating commands 
   private static Shoot shoot;
   private static Feed  feed;
   private static Kick  kick;
   private static Elevator elevator;
+  private static Intack intack;
+  private static IntakeUpDown intakeUpDown;
   
   public RobotContainer() {
     // finshing command setup
@@ -52,6 +60,8 @@ public class RobotContainer {
     kick = new Kick(AssemblyLine);
     feed = new Feed(AssemblyLine);
     elevator = new Elevator(AssemblyLine);
+    intack = new Intack(Intake);
+    intakeUpDown = new IntakeUpDown(Intake);
 
     // Configure the button bindings
     configureButtonBindings();

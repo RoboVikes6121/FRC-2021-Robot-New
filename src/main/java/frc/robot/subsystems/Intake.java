@@ -13,7 +13,7 @@ import frc.robot.Constants;
 
 public class Intake extends SubsystemBase {
   /** Creates a new Intake. */
-  private static WPI_VictorSPX intake = new WPI_VictorSPX(Constants.INTAKE);
+  private static WPI_VictorSPX intake = new WPI_VictorSPX(Constants.INTACK);
   private static DoubleSolenoid intakeDoubleSolenoid = new DoubleSolenoid(Constants.INTAKE1,Constants.INTAKE2);
   public Intake() {
   }
@@ -24,11 +24,11 @@ public class Intake extends SubsystemBase {
   }
 
   public void start(){
-    intake.set(.75);
+    intack.set(.75);
   }
 
   public void end(){
-    intake.set(0);
+    intack.set(0);
     System.out.println("COMMAND ENDED");
   }
 

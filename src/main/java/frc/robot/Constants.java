@@ -47,4 +47,9 @@ public final class Constants {
     public static int FALCON = 7;
     public static int KICKERIN = 2;
     public static int KICKEROUT = 4;
+
+    // Intake
+    public static int INTACK = 5;
+    public static int INTAKE1 = 5;
+    public static int INTAKE2 = 3;
 }
