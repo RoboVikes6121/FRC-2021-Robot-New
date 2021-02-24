@@ -33,11 +33,12 @@ public class RobotContainer {
 
   //creation of controllers 
   private static final XboxController mainDriveCon = new XboxController(Constants.MAINDRIVECON);
+  private static final XboxController mainOperCon = new XboxController(Constants.MAINOPERCON);
   private static JoystickButton presitionButton = new JoystickButton(mainDriveCon, XboxController.Button.kBumperLeft.value);
-  private static JoystickButton shootButton = new JoystickButton(mainDriveCon, XboxController.Button.kX.value);
-  private static JoystickButton feedButton = new JoystickButton(mainDriveCon, XboxController.Button.kB.value);
-  private static JoystickButton kickButton = new JoystickButton(mainDriveCon, XboxController.Button.kY.value);
-  //private static JoystickButton elevatorButton = new JoystickButton(mainDriveCon, XboxController.Button.kA.value);
+  private static JoystickButton shootButton = new JoystickButton(mainOperCon, XboxController.Button.kX.value);
+  private static JoystickButton feedButton = new JoystickButton(mainOperCon, XboxController.Button.kB.value);
+  private static JoystickButton kickButton = new JoystickButton(mainOperCon, XboxController.Button.kY.value);
+  private static JoystickButton elevatorButton = new JoystickButton(mainDriveCon, XboxController.Button.kA.value);
 
   //creating commands 
   private static Shoot shoot;
@@ -58,10 +59,10 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     //binding a button to a command
-    shootButton.whenHeld(shoot);
+    shootButton.whenPressed(shoot);
     feedButton.whenHeld(feed);
     kickButton.whenPressed(kick);
-    //elevatorButton.whenHeld(elevator);
+    elevatorButton.whenPressed(elevator);
   }
 
   // creating get methodes for subsystems
@@ -89,9 +90,9 @@ public class RobotContainer {
   public static boolean getKickButon(){
     return kickButton.get();
   }
-  //public static boolean getElevatorButton(){
-    //return elevatorButton.get();
-  //}
+  public static boolean getElevatorButton(){
+    return elevatorButton.get();
+  }
 
   // creating get methodes for axis on controler One
   public static double getDriveRawAxis(int axis) {

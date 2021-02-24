@@ -19,7 +19,7 @@ public final class Constants {
 
     //controlers
     public static int MAINDRIVECON = 0;
-
+    public static int MAINOPERCON = 1;
     public static int LEFTSTICKX = 0;
     public static int LEFTSTICKY = 1;
     public static int RIGHTSTICKX = 4;

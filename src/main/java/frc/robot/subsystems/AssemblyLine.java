@@ -34,8 +34,9 @@ public class AssemblyLine extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    elevator.set(0.8);
+   
   }
+
 
   public void start(){ //on
     shooter.set(ControlMode.PercentOutput, 0.50);
@@ -61,4 +62,8 @@ public class AssemblyLine extends SubsystemBase {
   public void elevate(){
     elevator.set(0.8);
   }
+  public void stop(){
+    elevator.set(0);
+  }
+
 }
