@@ -5,22 +5,21 @@
 package frc.robot.commands.Teleop;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intack;
 import frc.robot.subsystems.Intake;
 
 public class IntakeUpDown extends CommandBase {
   /** Creates a new IntackUpDown. */
-  private Intack m_Intack; 
+  private Intake m_Intake; 
 
   public IntakeUpDown(Intake intake) {
-    m_Intack = intake;
-    addRequirements(m_Intack);
+    m_Intake = intake;
+    addRequirements(m_Intake);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Intack.sol();
+    m_Intake.sol();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

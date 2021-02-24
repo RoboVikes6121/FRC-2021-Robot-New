@@ -23,11 +23,11 @@ public class Intake extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void start(){
+  public void nom(){
     intack.set(.75);
   }
 
-  public void end(){
+  public void non(){
     intack.set(0);
   }
 
