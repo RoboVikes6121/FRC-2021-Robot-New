@@ -12,6 +12,8 @@ import frc.robot.subsystems.AssemblyLine;
 
 public class Shoot extends CommandBase {
 
+  private boolean isRunning= true;
+
   private AssemblyLine m_AssemblyLine;
 
   // sets up command
@@ -22,20 +24,27 @@ public class Shoot extends CommandBase {
 
   // Called when the command is initially scheduled.
   public void initialize() {
+    if (!isRunning){
+      isRunning = true;
+    }else{
+      isRunning = false;
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   public void execute() {
+    
     m_AssemblyLine.start();
   }
 
   // Called once the command ends or is interrupted.
   public void end(boolean interrupted) {
+  
     m_AssemblyLine.end();
   }
 
   // Returns true when the command should end.
   public boolean isFinished() {
-    return true;
+    return isRunning;
   }
 }

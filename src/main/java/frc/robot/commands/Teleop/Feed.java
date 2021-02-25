@@ -6,14 +6,14 @@ package frc.robot.commands.Teleop;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.AssemblyLine;
+import frc.robot.subsystems.FeedSub;
 
 public class Feed extends CommandBase {
 
  
-  public Feed(AssemblyLine AssemblyLine) {
+  public Feed(FeedSub FeedSub) {
     
-    addRequirements(RobotContainer.getAssemblyLine());
+    addRequirements(RobotContainer.getFeedSub());
   }
 
   // Called when the command is initially scheduled.
@@ -23,13 +23,13 @@ public class Feed extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.getAssemblyLine().feed();
+    RobotContainer.getFeedSub().feed();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.getAssemblyLine().fed();
+    RobotContainer.getFeedSub().fed();
   }
 
   // Returns true when the command should end.
