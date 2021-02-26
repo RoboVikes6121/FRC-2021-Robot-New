@@ -6,14 +6,14 @@ package frc.robot.commands.Teleop;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.AssemblyLine;
+import frc.robot.subsystems.KickSub;
 
 public class Kick extends CommandBase {
   
   
-  public Kick(AssemblyLine AssemblyLine) {
+  public Kick(KickSub kickSub) {
    
-    addRequirements(RobotContainer.getAssemblyLine());
+    addRequirements(RobotContainer.getKickSub());
   }
 
   // Called when the command is initially scheduled.
@@ -23,7 +23,7 @@ public class Kick extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.getAssemblyLine().kick();
+    RobotContainer.getKickSub().kick();
   }
 
   // Called once the command ends or is interrupted.

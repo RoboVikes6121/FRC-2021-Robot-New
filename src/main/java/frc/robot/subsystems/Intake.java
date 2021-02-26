@@ -24,7 +24,7 @@ public class Intake extends SubsystemBase {
   }
 
   public void nom(){
-    intack.set(.75);
+    intack.set(-.75);
   }
 
   public void wom(){

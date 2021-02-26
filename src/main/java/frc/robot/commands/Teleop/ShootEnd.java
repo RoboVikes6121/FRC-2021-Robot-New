@@ -5,32 +5,30 @@
 package frc.robot.commands.Teleop;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.EleSub;
+import frc.robot.subsystems.AssemblyLine;
 
-public class Elevator extends CommandBase {
-  
-  
-
-  public Elevator(EleSub EleSub) {
-    addRequirements(RobotContainer.getEleSub());
+public class ShootEnd extends CommandBase {
+  /** Creates a new ShootEnd. */
+  private AssemblyLine m_AssemblyLine;
+  public ShootEnd(AssemblyLine AssemblyLine) {
+    // Use addRequirements() here to declare subsystem dependencies.
+    m_AssemblyLine = AssemblyLine;
+    addRequirements(m_AssemblyLine);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_AssemblyLine.end();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() { 
-    RobotContainer.getEleSub().elevate();
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    //RobotContainer.getEleSub().stop();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

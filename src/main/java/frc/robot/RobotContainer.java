@@ -14,8 +14,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Teleop.Kick;
 import frc.robot.commands.Teleop.Shoot;
+import frc.robot.commands.Teleop.ShootEnd;
 import frc.robot.commands.Teleop.Feed;
 import frc.robot.commands.Teleop.Elevator;
+import frc.robot.commands.Teleop.EleEnd;
 import frc.robot.commands.Teleop.Intack;
 import frc.robot.commands.Teleop.IntakeUpDown;
 import frc.robot.subsystems.DriveTrain;
@@ -24,7 +26,7 @@ import frc.robot.subsystems.SetGyro;
 import frc.robot.subsystems.AssemblyLine;
 import frc.robot.subsystems.FeedSub;
 import frc.robot.subsystems.Intake;
-//import frc.robot.subsystems.KickSub;
+import frc.robot.subsystems.KickSub;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -38,7 +40,7 @@ public class RobotContainer {
   private static final SetGyro setGyro = new SetGyro();
   private static final AssemblyLine AssemblyLine = new AssemblyLine();
   private static final FeedSub FeedSub = new FeedSub();
-//  private static final KickSub KickSub = new KickSub();
+  private static final KickSub KickSub = new KickSub();
   private static final EleSub EleSub = new EleSub();
   private static final Intake Intake = new Intake();
 
@@ -47,26 +49,32 @@ public class RobotContainer {
   private static final Joystick mainOperCon = new Joystick(Constants.MAINOPERCON);
   private static JoystickButton presitionButton = new JoystickButton(mainDriveCon, XboxController.Button.kBumperLeft.value);
   private static JoystickButton shootButton = new JoystickButton(mainOperCon, 5);
+  private static JoystickButton shootEndButton = new JoystickButton(mainOperCon, 10);
   private static JoystickButton feedButton = new JoystickButton(mainOperCon, 7);
-//  private static JoystickButton kickButton = new JoystickButton(mainOperCon, 1);
+  private static JoystickButton kickButton = new JoystickButton(mainOperCon, 1);
   private static JoystickButton elevatorButton = new JoystickButton(mainOperCon, 6);
+  private static JoystickButton eleEndButton = new JoystickButton(mainOperCon, 9);
   private static JoystickButton intakeButton = new JoystickButton(mainOperCon, 2);
   private static JoystickButton intakeUpDownButton = new JoystickButton(mainOperCon, 8);
 
   //creating commands 
   private static Shoot shoot;
+  private static ShootEnd shootEnd;
   private static Feed  feed;
-//  private static Kick  kick;
+  private static Kick  kick;
   private static Elevator elevator;
+  private static EleEnd eleEnd;
   private static Intack intack;
   private static IntakeUpDown intakeUpDown;
   
   public RobotContainer() {
     // finshing command setup
     shoot = new Shoot(AssemblyLine);
-  //  kick = new Kick(AssemblyLine);
+    shootEnd = new ShootEnd(AssemblyLine);
+    kick = new Kick(KickSub);
     feed = new Feed(FeedSub);
-    elevator = new Elevator(AssemblyLine);
+    elevator = new Elevator(EleSub);
+    eleEnd = new EleEnd(EleSub);
     intack = new Intack(Intake);
     intakeUpDown = new IntakeUpDown(Intake);
 
@@ -77,9 +85,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     //binding a button to a command
     shootButton.whenPressed(shoot);
+    shootEndButton.whenPressed(shootEnd);
     feedButton.whenHeld(feed);
-  //  kickButton.whenPressed(kick);
+    kickButton.whenPressed(kick);
     elevatorButton.whenPressed(elevator);
+    eleEndButton.whenPressed(eleEnd);
     intakeButton.whenHeld(intack);
     intakeUpDownButton.whenPressed(intakeUpDown);
   }
@@ -97,9 +107,9 @@ public class RobotContainer {
   public static FeedSub getFeedSub(){
     return FeedSub;
   }
-  /*public static KickSub getKickSub(){
+  public static KickSub getKickSub(){
     return KickSub;
-  }*/
+  }
   public static EleSub getEleSub(){
     return EleSub;
   }
@@ -111,14 +121,20 @@ public class RobotContainer {
   public static boolean getShootButton(){
     return shootButton.get();
   }
+  public static boolean getShootEndButton(){
+    return shootEndButton.get();
+  }
   public static boolean getFeedButton(){
     return feedButton.get();
   }
-  /*public static boolean getKickButon(){
+  public static boolean getKickButon(){
     return kickButton.get();
-  }*/
+  }
   public static boolean getElevatorButton(){
     return elevatorButton.get();
+  }
+  public static boolean getEleEndButton(){
+    return eleEndButton.get();
   }
   public static boolean getIntakeButton(){
     return intakeButton.get();
