@@ -16,9 +16,12 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Auton.MoveAuton;
 import frc.robot.commands.Auton.PinkAuton;
 import frc.robot.commands.Auton.TurnAuton;
+import frc.robot.subsystems.AssemblyLine;
+import frc.robot.subsystems.DriveTrain;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -39,6 +42,7 @@ public class Robot extends TimedRobot {
     
     //reset encoders
     m_robotContainer.getDriveTrain().resetEncoders();
+//    SmartDashboard.putNumber("Encoder", DriveTrain.getAvragePos());
 
     //Creating cam 1 
     UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture();
@@ -52,9 +56,16 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     //running the schedel
+    
+    SmartDashboard.putNumber("Lencodervel", DriveTrain.GetEncoder()[0]);
+    SmartDashboard.putNumber("Lencoderpos", DriveTrain.GetEncoder()[1]);
+    SmartDashboard.putNumber("Rencodervel", DriveTrain.GetEncoder()[2]);
+    SmartDashboard.putNumber("Rencoderpos", DriveTrain.GetEncoder()[3]);
     CommandScheduler.getInstance().run();
+    
   }
 
+  
   //called once each time the robot enters Disabled mode.
   @Override
   public void disabledInit() {}

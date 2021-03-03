@@ -37,7 +37,14 @@ public class DriveTrain extends SubsystemBase {
     rightmaster.configPeakCurrentLimit(40);
     rightslave.configPeakCurrentLimit(40);
   }
-
+  public static double[] GetEncoder(){
+    double[] ENCODER_LIST = new double[6];
+ENCODER_LIST[0] = DriveTrain.leftmaster.getSelectedSensorVelocity();
+ENCODER_LIST[1] = DriveTrain.leftmaster.getSelectedSensorPosition();
+ENCODER_LIST[2] = DriveTrain.rightmaster.getSelectedSensorVelocity();
+ENCODER_LIST[3] = DriveTrain.rightmaster.getSelectedSensorPosition();
+return ENCODER_LIST; 
+  }
   //teleop
   public void driveManuale(){
     double move = RobotContainer.getDriveRawAxis(Constants.LEFTSTICKY); 
