@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Auton.MoveAuton;
 import frc.robot.commands.Auton.PinkAuton;
+import frc.robot.commands.Auton.TurnAuton;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -70,7 +71,8 @@ public class Robot extends TimedRobot {
     m_robotContainer.getGyro().reset();
 
     m_autonomousCommand = new PinkAuton(RobotContainer.getDriveTrain());
-
+    //m_autonomousCommand = new MoveAuton(RobotContainer.getDriveTrain(), .5, 24);
+    //m_autonomousCommand = new TurnAuton(RobotContainer.getDriveTrain(), 90);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }

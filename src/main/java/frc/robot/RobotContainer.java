@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Teleop.Kick;
 import frc.robot.commands.Teleop.Shoot;
+import frc.robot.commands.Teleop.ShootTwo;
 import frc.robot.commands.Teleop.ShootEnd;
 import frc.robot.commands.Teleop.Feed;
 import frc.robot.commands.Teleop.Elevator;
@@ -49,6 +50,7 @@ public class RobotContainer {
   private static final Joystick mainOperCon = new Joystick(Constants.MAINOPERCON);
   private static JoystickButton presitionButton = new JoystickButton(mainDriveCon, XboxController.Button.kBumperLeft.value);
   private static JoystickButton shootButton = new JoystickButton(mainOperCon, 5);
+  private static JoystickButton shootTwoButton = new JoystickButton(mainOperCon, 4);
   private static JoystickButton shootEndButton = new JoystickButton(mainOperCon, 10);
   private static JoystickButton feedButton = new JoystickButton(mainOperCon, 7);
   private static JoystickButton kickButton = new JoystickButton(mainOperCon, 1);
@@ -59,6 +61,7 @@ public class RobotContainer {
 
   //creating commands 
   private static Shoot shoot;
+  private static ShootTwo shootTwo;
   private static ShootEnd shootEnd;
   private static Feed  feed;
   private static Kick  kick;
@@ -70,6 +73,7 @@ public class RobotContainer {
   public RobotContainer() {
     // finshing command setup
     shoot = new Shoot(AssemblyLine);
+    shootTwo = new ShootTwo(AssemblyLine);
     shootEnd = new ShootEnd(AssemblyLine);
     kick = new Kick(KickSub);
     feed = new Feed(FeedSub);
@@ -85,6 +89,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     //binding a button to a command
     shootButton.whenPressed(shoot);
+    shootTwoButton.whenPressed(shootTwo);
     shootEndButton.whenPressed(shootEnd);
     feedButton.whenHeld(feed);
     kickButton.whenPressed(kick);
@@ -120,6 +125,9 @@ public class RobotContainer {
   } 
   public static boolean getShootButton(){
     return shootButton.get();
+  }
+  public static boolean getShootTwoButton(){
+    return shootTwoButton.get();
   }
   public static boolean getShootEndButton(){
     return shootEndButton.get();

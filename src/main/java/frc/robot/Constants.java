@@ -40,6 +40,7 @@ public final class Constants {
     // auton
    
     public static double TIREDIAMETER = 6; // INCHES
+    public static boolean slowturn = false;
 
     // AssemblyLine
     public static int ELEVATOR = 4;

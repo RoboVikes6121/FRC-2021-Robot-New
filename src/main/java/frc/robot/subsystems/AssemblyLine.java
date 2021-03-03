@@ -39,7 +39,10 @@ public class AssemblyLine extends SubsystemBase {
 
 
   public void start(){ //on
-    shooter.set(ControlMode.PercentOutput, 0.15);
+    shooter.set(ControlMode.PercentOutput, 0.35);
+  }
+  public void fast(){
+    shooter.set(ControlMode.PercentOutput, 0.45);
   }
   public void end(){ //off
     shooter.set(ControlMode.PercentOutput, 0);

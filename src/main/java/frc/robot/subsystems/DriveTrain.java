@@ -38,25 +38,35 @@ public class DriveTrain extends SubsystemBase {
     rightslave.configPeakCurrentLimit(40);
   }
 
-  //dirve manuale
+  //teleop
   public void driveManuale(){
     double move = RobotContainer.getDriveRawAxis(Constants.LEFTSTICKY); 
     double turn = RobotContainer.getDriveRawAxis(Constants.RIGHTSTICKX);
     boolean presition = RobotContainer.getPresitionButton();
-
-    if(presition == false){
+    
+    if(presition == false ){
       if(move > Constants.MAXSPEED) move = Constants.MAXSPEED;
       if(move < -Constants.MAXSPEED) move = -Constants.MAXSPEED;
       if(turn > Constants.MAXSPEED) turn = Constants.MAXSPEED;
       if(turn < -Constants.MAXSPEED) turn = -Constants.MAXSPEED;
-    }else{
+    }
+    /*else if(Constants.slowturn == true ){
+      move = move/3;
+      turn = turn/3;
+      if(move > Constants.MAXPRSPEED) move = Constants.MAXPRSPEED;
+      if(move < -Constants.MAXPRSPEED) move = -Constants.MAXPRSPEED;
+      if(turn > Constants.MAXPRSPEED) turn = Constants.MAXPRSPEED;
+      if(turn < -Constants.MAXPRSPEED) turn = -Constants.MAXPRSPEED;
+    }*/
+    else{
       move = move/2;
       turn = turn/2;
       if(move > Constants.MAXPRSPEED) move = Constants.MAXPRSPEED;
       if(move < -Constants.MAXPRSPEED) move = -Constants.MAXPRSPEED;
       if(turn > Constants.MAXPRSPEED) turn = Constants.MAXPRSPEED;
       if(turn < -Constants.MAXPRSPEED) turn = -Constants.MAXPRSPEED;
-    }  
+    }
+      
 
     drive.arcadeDrive(-move, turn);
   }

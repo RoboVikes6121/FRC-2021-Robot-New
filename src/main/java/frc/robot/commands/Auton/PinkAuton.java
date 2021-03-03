@@ -21,8 +21,21 @@ public class PinkAuton extends SequentialCommandGroup {
     
     super(
       
-     // new MoveAuton(m_driveTrain, .5, 48)
-      new TurnAuton(m_driveTrain, 90)
+     //new MoveAuton(m_driveTrain, .5, 24)
+     //new TurnAuton(m_driveTrain, 90)
     );
+
+    addCommands(new MoveAuton(m_driveTrain, .7, 12));
+    System.out.println("NUMBAH ONE");
+    m_driveTrain.resetEncoders();
+    addCommands(new TurnAuton(m_driveTrain, 90));
+    System.out.println("NUMBAH TWO");
+    m_driveTrain.resetEncoders();
+    addCommands(new MoveAuton(m_driveTrain, .7, 12));
+    System.out.println("NUMBAH THREE");
+    m_driveTrain.resetEncoders();
+    addCommands(new TurnAuton(m_driveTrain,  90));
+    System.out.println("NUMBAH FOUR");
+    m_driveTrain.resetEncoders();
   }
 }

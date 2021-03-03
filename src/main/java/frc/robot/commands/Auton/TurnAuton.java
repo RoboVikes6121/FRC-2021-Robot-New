@@ -8,8 +8,10 @@
 package frc.robot.commands.Auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
+//import jdk.vm.ci.meta.Constant;
 
 public class TurnAuton extends CommandBase {
 
@@ -24,11 +26,13 @@ public class TurnAuton extends CommandBase {
 
     this.angle = angle;
     isDone = false;
+    
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_DriveTrain.resetEncoders();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -37,7 +41,6 @@ public class TurnAuton extends CommandBase {
 
     m_DriveTrain.turnAuton(angle);
     if(RobotContainer.getGyro().getAngle() >= angle-0.5 && RobotContainer.getGyro().getAngle() <= angle+0.5) isDone = true;
-    System.out.println("ISDONE= "+ isDone);
   }
 
   // Called once the command ends or is interrupted.
@@ -49,6 +52,7 @@ public class TurnAuton extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+   
     return isDone;
   }
 }
