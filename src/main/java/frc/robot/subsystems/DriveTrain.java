@@ -57,14 +57,6 @@ return ENCODER_LIST;
       if(turn > Constants.MAXSPEED) turn = Constants.MAXSPEED;
       if(turn < -Constants.MAXSPEED) turn = -Constants.MAXSPEED;
     }
-    /*else if(Constants.slowturn == true ){
-      move = move/3;
-      turn = turn/3;
-      if(move > Constants.MAXPRSPEED) move = Constants.MAXPRSPEED;
-      if(move < -Constants.MAXPRSPEED) move = -Constants.MAXPRSPEED;
-      if(turn > Constants.MAXPRSPEED) turn = Constants.MAXPRSPEED;
-      if(turn < -Constants.MAXPRSPEED) turn = -Constants.MAXPRSPEED;
-    }*/
     else{
       move = move/2;
       turn = turn/2;
@@ -88,8 +80,8 @@ return ENCODER_LIST;
 
     if(Math.abs(RobotContainer.getGyro().getAngle()) > 0){
       turn = RobotContainer.getGyro().getAngle() * Constants.DRIVEP;
-      if(turn > Constants.MAXSPEED) turn = Constants.MAXSPEED;
-      if(turn < -Constants.MAXSPEED) turn = -Constants.MAXSPEED;
+      if(turn > Constants.MAXPRSPEED) turn = Constants.MAXPRSPEED;
+      if(turn < -Constants.MAXPRSPEED) turn = -Constants.MAXPRSPEED;
     }
     drive.arcadeDrive(move, turn);
   }
@@ -130,12 +122,12 @@ return ENCODER_LIST;
     leftmaster.setNeutralMode(NeutralMode.Brake);
   }
 
-  //getting encoder avrage vol ((left+right)/2 
+  //getting encoder avrage vol (left+right)/2 
   public double getAvrageVol(){
     return (leftmaster.getSelectedSensorVelocity() + rightmaster.getSelectedSensorVelocity())/2;
   }
 
-  //getting encoder avrage pos ((left+right)/2 
+  //getting encoder avrage pos (left+right)/2 
   public double getAvragePos(){
     return (Math.abs(leftmaster.getSelectedSensorPosition()) + Math.abs(rightmaster.getSelectedSensorPosition()))/2;
   }
