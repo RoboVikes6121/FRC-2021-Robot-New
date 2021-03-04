@@ -8,6 +8,7 @@
 package frc.robot.commands.Auton;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -28,16 +29,8 @@ public class PinkAuton extends SequentialCommandGroup {
     //addCommands(new MoveAuton(m_driveTrain, .7, 12));
     //System.out.println("NUMBAH ONE");
     //m_driveTrain.resetEncoders();
-   addCommands(new TurnAuton(m_driveTrain, 90));
-    //System.out.println("NUMBAH TWO");
-    //m_driveTrain.resetEncoders();
-   // addCommands(new MoveAuton(m_driveTrain, .7, -12));
-    //System.out.println("NUMBAH THREE");
-    //m_driveTrain.resetEncoders();
-    //addCommands(new MoveAuton(m_driveTrain, .7, 12));
-    addCommands(new TurnAuton(m_driveTrain,  0));
-    //System.out.println("NUMBAH FOUR");
-    //m_driveTrain.resetEncoders();
-    //addCommands(new MoveAuton(m_driveTrain, .7, -12));
-  }
+    addCommands(new TurnAuton(m_driveTrain, 85));
+    RobotContainer.getGyro().reset();
+    addCommands(new TurnAuton(m_driveTrain, 85));
+    }
 }

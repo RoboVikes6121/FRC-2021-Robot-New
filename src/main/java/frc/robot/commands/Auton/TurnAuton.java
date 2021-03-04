@@ -7,6 +7,7 @@
 
 package frc.robot.commands.Auton;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -22,6 +23,8 @@ public class TurnAuton extends CommandBase {
   // sets up command
   public TurnAuton(DriveTrain driveTrain, double angle) {
     m_DriveTrain = driveTrain;
+    
+   SmartDashboard.putBoolean("isdone", isDone);
     addRequirements(m_DriveTrain);
 
     this.angle = angle;
@@ -38,7 +41,6 @@ public class TurnAuton extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
     m_DriveTrain.turnAuton(angle);
     if(RobotContainer.getGyro().getAngle() >= angle-0.5 && RobotContainer.getGyro().getAngle() <= angle+0.5) isDone = true;
   }
@@ -52,7 +54,6 @@ public class TurnAuton extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   
     return isDone;
   }
 }
