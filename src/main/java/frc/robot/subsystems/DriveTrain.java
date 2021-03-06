@@ -58,10 +58,10 @@ public class DriveTrain extends SubsystemBase {
         move = Constants.MAXSPEED;
       if (move < -Constants.MAXSPEED)
         move = -Constants.MAXSPEED;
-      if (turn > Constants.MAXSPEED)
-        turn = Constants.MAXSPEED;
-      if (turn < -Constants.MAXSPEED)
-        turn = -Constants.MAXSPEED;
+      if (turn > Constants.MAXSPEED-.2)
+        turn = Constants.MAXSPEED-.2;
+      if (turn < -Constants.MAXSPEED-.2)
+        turn = -Constants.MAXSPEED-.2;
     } else {
       move = move / 2;
       turn = turn / 2;
@@ -69,10 +69,10 @@ public class DriveTrain extends SubsystemBase {
         move = Constants.MAXPRSPEED;
       if (move < -Constants.MAXPRSPEED)
         move = -Constants.MAXPRSPEED;
-      if (turn > Constants.MAXPRSPEED)
-        turn = Constants.MAXPRSPEED;
-      if (turn < -Constants.MAXPRSPEED)
-        turn = -Constants.MAXPRSPEED;
+      if (turn > Constants.MAXPRSPEED-.2)
+        turn = Constants.MAXPRSPEED-.2;
+      if (turn < -Constants.MAXPRSPEED-.2)
+        turn = -Constants.MAXPRSPEED-.2;
     }
 
     drive.arcadeDrive(-move, turn);
@@ -90,10 +90,10 @@ public class DriveTrain extends SubsystemBase {
 
     if (Math.abs(RobotContainer.getGyro().getAngle()) > 0) {
       turn = RobotContainer.getGyro().getAngle() * Constants.DRIVEP;
-      if (turn > Constants.MAXSPEED)
-        turn = Constants.MAXSPEED;
-      if (turn < -Constants.MAXSPEED)
-        turn = -Constants.MAXSPEED;
+      if (turn > Constants.MAXPRSPEED)
+        turn = Constants.MAXPRSPEED;
+      if (turn < -Constants.MAXPRSPEED)
+        turn = -Constants.MAXPRSPEED;
     }
     drive.arcadeDrive(move, turn);
   }
@@ -104,11 +104,11 @@ public class DriveTrain extends SubsystemBase {
     double turn = error * Constants.DRIVEP;
     //boolean running = true;
     if (Math.abs(error) <= 20) {
-      if (Math.abs(error) <= 1) {
+      /*if (Math.abs(error) <= 1) {
         turn = turn / 3;
         //running = false;
-      }
-      turn = turn / 2;
+      }*/
+      //turn = turn / 2;
     }
 
     if (turn > Constants.MAXPRSPEED)
@@ -116,7 +116,7 @@ public class DriveTrain extends SubsystemBase {
     if (turn < -Constants.MAXPRSPEED)
       turn = -Constants.MAXPRSPEED;
 
-    drive.arcadeDrive(0, turn);
+    drive.arcadeDrive(0, -turn);
     // drive.arcadeDrive(.5, -turn);
     /*
     if(running){drive.tankDrive(-.5, .5);

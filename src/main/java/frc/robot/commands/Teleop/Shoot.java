@@ -24,13 +24,6 @@ public class Shoot extends CommandBase {
 
   // Called when the command is initially scheduled.
   public void initialize() {
-    /*if (!isRunning){
-      System.out.println("TRUE");
-      isRunning = true;
-    }else{
-      System.out.println("FALSE");
-      isRunning = false;
-    }*/
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -40,8 +33,6 @@ public class Shoot extends CommandBase {
 
   // Called once the command ends or is interrupted.
   public void end(boolean interrupted) {
-    //System.out.println("END");
-    //m_AssemblyLine.end();
   }
 
   // Returns true when the command should end.

@@ -49,6 +49,7 @@ public class TurnAuton extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_DriveTrain.end();
+    RobotContainer.getGyro().reset();
   }
 
   // Returns true when the command should end.

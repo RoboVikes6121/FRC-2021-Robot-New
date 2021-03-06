@@ -9,6 +9,7 @@ package frc.robot.commands.Auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
 
 public class MoveAuton extends CommandBase {
@@ -33,7 +34,9 @@ public class MoveAuton extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    System.out.println("WOOP");
     m_DriveTrain.resetEncoders();
+    RobotContainer.getGyro().reset();
     isDone = false;
   }
 

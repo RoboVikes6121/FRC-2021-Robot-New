@@ -61,6 +61,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Lencoderpos", DriveTrain.GetEncoder()[1]);
     SmartDashboard.putNumber("Rencodervel", DriveTrain.GetEncoder()[2]);
     SmartDashboard.putNumber("Rencoderpos", DriveTrain.GetEncoder()[3]);
+    SmartDashboard.putNumber("angle", RobotContainer.getGyro().getAngle());
     CommandScheduler.getInstance().run();
     
   }
