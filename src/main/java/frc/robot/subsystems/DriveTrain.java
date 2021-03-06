@@ -102,21 +102,26 @@ public class DriveTrain extends SubsystemBase {
   public void turnAuton(double angle) {
     double error = angle - RobotContainer.getGyro().getAngle();
     double turn = error * Constants.DRIVEP;
-    boolean running = true;
+    //boolean running = true;
     if (Math.abs(error) <= 20) {
       if (Math.abs(error) <= 1) {
         turn = turn / 3;
-        running = false;
-      } // else{
+        //running = false;
+      }
       turn = turn / 2;
-      // }
+    }
 
-    }
+    if (turn > Constants.MAXPRSPEED)
+      turn = Constants.MAXPRSPEED;
+    if (turn < -Constants.MAXPRSPEED)
+      turn = -Constants.MAXPRSPEED;
+
+    drive.arcadeDrive(0, turn);
     // drive.arcadeDrive(.5, -turn);
+    /*
     if(running){drive.tankDrive(-.5, .5);
-    }else{
-      drive.tankDrive(0,0);
-    }
+    }else{}
+    */
   }
 
 
